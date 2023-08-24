@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "9u5EXAieRNSDpTwA+obxVW3BtDOl/c4bvt1j8B20Ouz9+kuCgz6WZy9vxGzqWJjoIYh+rfDm3zgNUr+TIS8Dvg==",
+  "success": true,
+  "projectFilePath": "D:\\Development\\ASP.NET\\CMPG-323-Project-2---37280287\\EcoPowerLogisticsAPI_37280287\\EcoPowerLogisticsAPI_37280287.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Jacques Blaauw\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\Jacques Blaauw\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Jacques Blaauw\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\Jacques Blaauw\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\Jacques Blaauw\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\Jacques Blaauw\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}

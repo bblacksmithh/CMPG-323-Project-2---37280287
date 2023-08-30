@@ -247,3 +247,4 @@ C:\Users\User\Documents\University\323\CMPG-323-Project-2---37280287\EcoPowerLog
 C:\Users\User\Documents\University\323\CMPG-323-Project-2---37280287\EcoPowerLogisticsAPI_37280287\bin\Release\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 C:\Users\User\Documents\University\323\CMPG-323-Project-2---37280287\EcoPowerLogisticsAPI_37280287\bin\Release\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\User\Documents\University\323\CMPG-323-Project-2---37280287\EcoPowerLogisticsAPI_37280287\bin\Release\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\User\Documents\University\323\CMPG-323-Project-2---37280287\EcoPowerLogisticsAPI_37280287\bin\Release\net6.0\Microsoft.AspNetCore.JsonPatch.dll

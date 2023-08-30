@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EcoPowerLogisticsAPI_37280287.Models;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace EcoPowerLogisticsAPI_37280287.Controllers
 {
@@ -49,37 +50,6 @@ namespace EcoPowerLogisticsAPI_37280287.Controllers
             return order;
         }
 
-        // PUT: api/Orders/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutOrder(short id, Order order)
-        {
-            if (id != order.OrderId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(order).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!OrderExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
         // POST: api/Orders
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -109,6 +79,48 @@ namespace EcoPowerLogisticsAPI_37280287.Controllers
             return CreatedAtAction("GetOrder", new { id = order.OrderId }, order);
         }
 
+        // PATCH: api/Orders/5
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> UpdateOrder(short id, [FromBody] JsonPatchDocument<Order> patchDoc)
+        {
+            if (patchDoc == null)
+            {
+                return BadRequest();
+            }
+
+            var order = await _context.Orders.FindAsync(id);
+
+            if (order == null)
+            {
+                return NotFound();
+            }
+
+            patchDoc.ApplyTo(order);
+
+            if (!TryValidateModel(order))
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!OrderExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
         // DELETE: api/Orders/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteOrder(short id)
@@ -127,6 +139,24 @@ namespace EcoPowerLogisticsAPI_37280287.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+
+        // GET: api/Customers/{customerId}/Orders
+        [HttpGet("~/api/Customers/{customerId}/Orders")]
+        public async Task<ActionResult<IEnumerable<Order>>> GetOrdersForCustomer(short customerId)
+        {
+            var customerExists = await _context.Customers.AnyAsync(c => c.CustomerId == customerId);
+
+            if (!customerExists)
+            {
+                return NotFound("Customer not found");
+            }
+
+            var ordersForCustomer = await _context.Orders
+                .Where(order => order.CustomerId == customerId)
+                .ToListAsync();
+
+            return ordersForCustomer;
         }
 
         private bool OrderExists(short id)

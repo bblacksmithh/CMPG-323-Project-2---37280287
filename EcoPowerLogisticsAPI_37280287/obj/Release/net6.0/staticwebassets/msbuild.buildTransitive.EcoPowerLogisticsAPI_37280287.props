@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\EcoPowerLogisticsAPI_37280287.props" />
-</Project>

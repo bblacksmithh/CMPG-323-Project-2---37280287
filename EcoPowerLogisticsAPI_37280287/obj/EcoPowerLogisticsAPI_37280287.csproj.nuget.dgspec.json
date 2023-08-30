@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Development\\ASP.NET\\CMPG-323-Project-2---37280287\\EcoPowerLogisticsAPI_37280287\\EcoPowerLogisticsAPI_37280287.csproj": {}
+    "C:\\Users\\User\\Documents\\University\\323\\CMPG-323-Project-2---37280287\\EcoPowerLogisticsAPI_37280287\\EcoPowerLogisticsAPI_37280287.csproj": {}
   },
   "projects": {
-    "D:\\Development\\ASP.NET\\CMPG-323-Project-2---37280287\\EcoPowerLogisticsAPI_37280287\\EcoPowerLogisticsAPI_37280287.csproj": {
+    "C:\\Users\\User\\Documents\\University\\323\\CMPG-323-Project-2---37280287\\EcoPowerLogisticsAPI_37280287\\EcoPowerLogisticsAPI_37280287.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Development\\ASP.NET\\CMPG-323-Project-2---37280287\\EcoPowerLogisticsAPI_37280287\\EcoPowerLogisticsAPI_37280287.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Documents\\University\\323\\CMPG-323-Project-2---37280287\\EcoPowerLogisticsAPI_37280287\\EcoPowerLogisticsAPI_37280287.csproj",
         "projectName": "EcoPowerLogisticsAPI_37280287",
-        "projectPath": "D:\\Development\\ASP.NET\\CMPG-323-Project-2---37280287\\EcoPowerLogisticsAPI_37280287\\EcoPowerLogisticsAPI_37280287.csproj",
-        "packagesPath": "C:\\Users\\Jacques Blaauw\\.nuget\\packages\\",
-        "outputPath": "D:\\Development\\ASP.NET\\CMPG-323-Project-2---37280287\\EcoPowerLogisticsAPI_37280287\\obj\\",
+        "projectPath": "C:\\Users\\User\\Documents\\University\\323\\CMPG-323-Project-2---37280287\\EcoPowerLogisticsAPI_37280287\\EcoPowerLogisticsAPI_37280287.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\Documents\\University\\323\\CMPG-323-Project-2---37280287\\EcoPowerLogisticsAPI_37280287\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Jacques Blaauw\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -44,6 +40,30 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.21, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.21, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.21, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.21, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.16, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
@@ -55,7 +75,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -67,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

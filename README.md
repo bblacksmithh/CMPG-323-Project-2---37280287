@@ -17,6 +17,5 @@ Reference list:
 - Join Query In Entity Framework. (2017, December 2). Retrieved from TekTutorialsHub: https://www.tektutorialshub.com/entity-framework/join-query-entity-framework/
 - Lemonaki, D. (2022, August 22). .gitignore File – How to Ignore Files and Folders in Git. Retrieved from freeCodeCamp: https://www.freecodecamp.org/news/gitignore-file-how-to-ignore-files-and-folders-in-git/
 - Managing Connection Strings in Entity Framework Core. (2019, May 08). Retrieved from Learn Entiry Framework Core: https://www.learnentityframeworkcore.com/connection-strings
-- Muller, J. (2022, January 24). Join two entities in .NET Core, using lambda and Entity Framework Core. Retrieved from JD Bots: https://jd-bots.com/2022/01/24/join-two-entities-in-net-core-using-lambda-and-entity-framework-core/
 - SnehaAgrawal-MSFT. (2021, December 21). 500 Internal Server Error in App Service. Retrieved from Microsoft docs: https://docs.microsoft.com/en-us/answers/questions/668644/500-internal-server-error-in-app-service.html
 

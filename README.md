@@ -12,7 +12,7 @@ This Project is to create a RESTful Web API in Visual Studio using the ASP.NET C
 - Fill in the login form with a valid username & password. In this instance you can log in with username: Admin, password: Admin@123.
 
 - After successfully logging in, you will get a token that you have to copy.
-
+![](image_2023-08-31_145615508.png)
 - Click on the authorize button at the top right.
 
 - Now you will need to type "Bearer" along with your token inside of the text box.

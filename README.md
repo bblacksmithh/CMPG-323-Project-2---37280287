@@ -22,7 +22,7 @@ This Project is to create a RESTful Web API in Visual Studio using the ASP.NET C
 - Select a request that you want to try and click on "Try it out".
 
 - After you have pressed executed on one of the requests, you will receive output accordingly.
-![](![image](https://github.com/bblacksmithh/CMPG-323-Project-2---37280287/assets/101953303/dc8cfbe8-e3db-43e1-b443-b4168ac22ddc))
+![](image_2023-08-31_151500027.png)
 ## Reference List
 Reference list:
 - Asynchronous programming with async and await. (2022, August 04). Retrieved from Microsoft: https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/

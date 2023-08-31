@@ -15,7 +15,7 @@ namespace EcoPowerLogisticsAPI.Controllers
     
     [Route("api/[controller]")]
     [ApiController]
-    [AllowAnonymous]
+    //[AllowAnonymous]
     [Authorize]
     public class ProductsController : ControllerBase
     {

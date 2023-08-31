@@ -15,6 +15,7 @@ using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using System.Linq;
+using EcoPowerLogisticsAPI.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,7 +25,7 @@ builder.Services.AddControllers();
 
 var connectionString = builder.Configuration.GetConnectionString("ConnStr");
 
-
+builder.Services.AddDbContext<Project2Context>(options => options.UseSqlServer(connectionString));
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
 
 // For Identity  

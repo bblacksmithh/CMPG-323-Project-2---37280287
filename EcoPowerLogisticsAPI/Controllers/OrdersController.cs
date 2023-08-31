@@ -6,11 +6,17 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EcoPowerLogisticsAPI.Models;
+using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Authorization;
+using JWTAuthentication.Authentication;
 
 namespace EcoPowerLogisticsAPI.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
+    [AllowAnonymous]
+    [Authorize]
     public class OrdersController : ControllerBase
     {
         private readonly Project2Context _context;
@@ -24,10 +30,6 @@ namespace EcoPowerLogisticsAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
         {
-          if (_context.Orders == null)
-          {
-              return NotFound();
-          }
             return await _context.Orders.ToListAsync();
         }
 
@@ -35,10 +37,6 @@ namespace EcoPowerLogisticsAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Order>> GetOrder(short id)
         {
-          if (_context.Orders == null)
-          {
-              return NotFound();
-          }
             var order = await _context.Orders.FindAsync(id);
 
             if (order == null)
@@ -49,17 +47,63 @@ namespace EcoPowerLogisticsAPI.Controllers
             return order;
         }
 
-        // PUT: api/Orders/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutOrder(short id, Order order)
+        // POST: api/Orders
+        [HttpPost]
+        public async Task<ActionResult<Order>> PostOrder(Order order)
         {
-            if (id != order.OrderId)
+            _context.Orders.Add(order);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetOrder", new { id = order.OrderId }, order);
+        }
+
+        // DELETE: api/Orders/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteOrder(short id)
+        {
+            var order = await _context.Orders.FindAsync(id);
+            if (!OrderExists(id))
+            {
+                return NotFound();
+            }
+
+            _context.Orders.Remove(order);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        // Private method to check if an Order exists
+        private bool OrderExists(short id)
+        {
+            return (_context.Orders?.Any(e => e.OrderId == id)).GetValueOrDefault();
+        }
+
+        // PATCH: api/Orders/5
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> PatchOrder(short id, [FromBody] JsonPatchDocument<Order> patchDocument)
+        {
+            if (patchDocument == null)
             {
                 return BadRequest();
             }
 
-            _context.Entry(order).State = EntityState.Modified;
+            var order = await _context.Orders.FindAsync(id);
+            if (order == null)
+            {
+                return NotFound();
+            }
+
+            // Apply the patch operations manually
+            patchDocument.ApplyTo(order);
+
+            // Validate the patched entity
+            TryValidateModel(order);
+
+            if (!ModelState.IsValid)
+            {
+                return UnprocessableEntity(ModelState);
+            }
 
             try
             {
@@ -80,58 +124,18 @@ namespace EcoPowerLogisticsAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/Orders
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Order>> PostOrder(Order order)
+        // GET: api/Orders/Customer/5
+        [HttpGet("Customer/{customerId}")]
+        public async Task<ActionResult<IEnumerable<Order>>> GetOrdersForCustomer(short customerId)
         {
-          if (_context.Orders == null)
-          {
-              return Problem("Entity set 'Project2Context.Orders'  is null.");
-          }
-            _context.Orders.Add(order);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (OrderExists(order.OrderId))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtAction("GetOrder", new { id = order.OrderId }, order);
-        }
-
-        // DELETE: api/Orders/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteOrder(short id)
-        {
-            if (_context.Orders == null)
-            {
-                return NotFound();
-            }
-            var order = await _context.Orders.FindAsync(id);
-            if (order == null)
+            var orders = await _context.Orders.Where(o => o.CustomerId == customerId).ToListAsync();
+            if (orders == null || orders.Count == 0)
             {
                 return NotFound();
             }
 
-            _context.Orders.Remove(order);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            return orders;
         }
 
-        private bool OrderExists(short id)
-        {
-            return (_context.Orders?.Any(e => e.OrderId == id)).GetValueOrDefault();
-        }
     }
 }

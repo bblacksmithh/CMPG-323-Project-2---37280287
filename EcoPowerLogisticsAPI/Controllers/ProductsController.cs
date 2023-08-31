@@ -6,11 +6,17 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EcoPowerLogisticsAPI.Models;
+using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Authorization;
+using JWTAuthentication.Authentication;
 
 namespace EcoPowerLogisticsAPI.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
+    [AllowAnonymous]
+    [Authorize]
     public class ProductsController : ControllerBase
     {
         private readonly Project2Context _context;
@@ -24,10 +30,6 @@ namespace EcoPowerLogisticsAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
-          if (_context.Products == null)
-          {
-              return NotFound();
-          }
             return await _context.Products.ToListAsync();
         }
 
@@ -35,10 +37,6 @@ namespace EcoPowerLogisticsAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(short id)
         {
-          if (_context.Products == null)
-          {
-              return NotFound();
-          }
             var product = await _context.Products.FindAsync(id);
 
             if (product == null)
@@ -49,17 +47,41 @@ namespace EcoPowerLogisticsAPI.Controllers
             return product;
         }
 
-        // PUT: api/Products/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduct(short id, Product product)
+        // POST: api/Products
+        [HttpPost]
+        public async Task<ActionResult<Product>> PostProduct(Product product)
         {
-            if (id != product.ProductId)
+            _context.Products.Add(product);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetProduct", new { id = product.ProductId }, product);
+        }
+
+        // PATCH: api/Products/5
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> PatchProduct(short id, [FromBody] JsonPatchDocument<Product> patchDocument)
+        {
+            if (patchDocument == null)
             {
                 return BadRequest();
             }
 
-            _context.Entry(product).State = EntityState.Modified;
+            var product = await _context.Products.FindAsync(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            // Apply the patch operations manually
+            patchDocument.ApplyTo(product);
+
+            // Validate the patched entity
+            TryValidateModel(product);
+
+            if (!ModelState.IsValid)
+            {
+                return UnprocessableEntity(ModelState);
+            }
 
             try
             {
@@ -80,45 +102,12 @@ namespace EcoPowerLogisticsAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/Products
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Product>> PostProduct(Product product)
-        {
-          if (_context.Products == null)
-          {
-              return Problem("Entity set 'Project2Context.Products'  is null.");
-          }
-            _context.Products.Add(product);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (ProductExists(product.ProductId))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtAction("GetProduct", new { id = product.ProductId }, product);
-        }
-
         // DELETE: api/Products/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(short id)
         {
-            if (_context.Products == null)
-            {
-                return NotFound();
-            }
             var product = await _context.Products.FindAsync(id);
-            if (product == null)
+            if (!ProductExists(id))
             {
                 return NotFound();
             }
@@ -129,9 +118,23 @@ namespace EcoPowerLogisticsAPI.Controllers
             return NoContent();
         }
 
+        // Private method to check if a Product exists
         private bool ProductExists(short id)
         {
-            return (_context.Products?.Any(e => e.ProductId == id)).GetValueOrDefault();
+            return _context.Products.Any(e => e.ProductId == id);
+        }
+
+        // GET: api/Products/Order/5
+        [HttpGet("Order/{orderId}")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProductsForOrder(short orderId)
+        {
+            var products = await _context.Products.Where(p => p.OrderDetails.Any(od => od.OrderId == orderId)).ToListAsync();
+            if (products == null || products.Count == 0)
+            {
+                return NotFound();
+            }
+
+            return products;
         }
     }
 }

@@ -242,3 +242,10 @@ D:\Development\ASP.NET\CMPG-323-Project-2---37280287\EcoPowerLogisticsAPI\obj\Re
 D:\Development\ASP.NET\CMPG-323-Project-2---37280287\EcoPowerLogisticsAPI\obj\Release\net6.0\EcoPowerLogisticsAPI.pdb
 D:\Development\ASP.NET\CMPG-323-Project-2---37280287\EcoPowerLogisticsAPI\obj\Release\net6.0\EcoPowerLogisticsAPI.genruntimeconfig.cache
 D:\Development\ASP.NET\CMPG-323-Project-2---37280287\EcoPowerLogisticsAPI\obj\Release\net6.0\ref\EcoPowerLogisticsAPI.dll
+D:\Development\ASP.NET\CMPG-323-Project-2---37280287\EcoPowerLogisticsAPI\bin\Release\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\Development\ASP.NET\CMPG-323-Project-2---37280287\EcoPowerLogisticsAPI\bin\Release\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Development\ASP.NET\CMPG-323-Project-2---37280287\EcoPowerLogisticsAPI\bin\Release\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\Development\ASP.NET\CMPG-323-Project-2---37280287\EcoPowerLogisticsAPI\bin\Release\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\Development\ASP.NET\CMPG-323-Project-2---37280287\EcoPowerLogisticsAPI\bin\Release\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\Development\ASP.NET\CMPG-323-Project-2---37280287\EcoPowerLogisticsAPI\bin\Release\net6.0\Microsoft.Extensions.Identity.Core.dll
+D:\Development\ASP.NET\CMPG-323-Project-2---37280287\EcoPowerLogisticsAPI\bin\Release\net6.0\Microsoft.Extensions.Identity.Stores.dll

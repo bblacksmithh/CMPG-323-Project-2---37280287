@@ -1,10 +1,10 @@
 # CMPG-323-Project-2---37280287
-##Info
+## Info
 This Project is to create a RESTful Web API in Visual Studio using the ASP.NET CORE Framework mainly in C#.
 
 
 
-##Reference List
+## Reference List
 Reference list:
 Asynchronous programming with async and await. (2022, August 04). Retrieved from Microsoft: https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/
 Bladoszewski, K. (2020, April 21). How to Join 3 Tables (or More) in SQL. Retrieved from LearnSQL: https://learnsql.com/blog/how-to-join-3-tables-or-more-in-sql/

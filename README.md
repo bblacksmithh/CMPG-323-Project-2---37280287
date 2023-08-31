@@ -2,7 +2,26 @@
 ## Info
 This Project is to create a RESTful Web API in Visual Studio using the ASP.NET CORE Framework mainly in C#.
 
+## How to use API:
+- Navigate to the following website: https://ecopowerlogistics37280287.azurewebsites.net/index.html
+- The following will then be displayed:
 
+- Here you can Read, Update, Create, and Delete Entries from Customers, Products, OrderDetails, and Orders. You have to log in first though.
+- To log in, you have to navigate to the Authentication sections and drop down the Login request. The 2 other requests are to register new Users/Admins.
+
+- Fill in the login form with a valid username & password. In this instance you can log in with username: Admin, password: Admin@123.
+
+- After successfully logging in, you will get a token that you have to copy.
+
+- Click on the authorize button at the top right.
+
+- Now you will need to type "Bearer" along with your token inside of the text box.
+
+- Once you are logged in, you will see a closed lock icon next to the endpoints, this means you ate successfully logged in, and you will have access to all the requests.
+
+- Select a request that you want to try and click on "Try it out".
+
+- After you have pressed executed on one of the requests, you will receive output accordingly.
 
 ## Reference List
 Reference list:

@@ -5,7 +5,7 @@ This Project is to create a RESTful Web API in Visual Studio using the ASP.NET C
 ## How to use API:
 - Navigate to the following website: https://ecopowerlogistics37280287.azurewebsites.net/index.html
 - The following will then be displayed:
-
+![](image_2023-08-31_145036487.png)
 - Here you can Read, Update, Create, and Delete Entries from Customers, Products, OrderDetails, and Orders. You have to log in first though.
 - To log in, you have to navigate to the Authentication sections and drop down the Login request. The 2 other requests are to register new Users/Admins.
 

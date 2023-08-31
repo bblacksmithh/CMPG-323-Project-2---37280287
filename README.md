@@ -8,7 +8,7 @@ This Project is to create a RESTful Web API in Visual Studio using the ASP.NET C
 ![](image_2023-08-31_145036487.png)
 - Here you can Read, Update, Create, and Delete Entries from Customers, Products, OrderDetails, and Orders. You have to log in first though.
 - To log in, you have to navigate to the Authentication sections and drop down the Login request. The 2 other requests are to register new Users/Admins.
-![](image_2023-08-31_145036487.png)
+![](image_2023-08-31_145248360.png)
 - Fill in the login form with a valid username & password. In this instance you can log in with username: Admin, password: Admin@123.
 
 - After successfully logging in, you will get a token that you have to copy.

@@ -14,7 +14,7 @@ This Project is to create a RESTful Web API in Visual Studio using the ASP.NET C
 - After successfully logging in, you will get a token that you have to copy.
 ![](image_2023-08-31_145615508.png)
 - Click on the authorize button at the top right.
-
+![](image_2023-08-31_145817208.png)
 - Now you will need to type "Bearer" along with your token inside of the text box.
 
 - Once you are logged in, you will see a closed lock icon next to the endpoints, this means you ate successfully logged in, and you will have access to all the requests.
